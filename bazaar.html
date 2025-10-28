@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bazaar - Mitti</title>
+<link href="/static/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="style.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Sans+Devanagari:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+</head>
+<body class="bg-[#fff7ed] font-inter text-gray-800 min-h-screen flex flex-col pb-16">
+<custom-navbar></custom-navbar>
+<main class="flex-1 px-4 py-6">
+<section class="max-w-4xl mx-auto">
+<div class="flex justify-between items-center mb-6">
+<h1 class="text-3xl font-bold text-[#8b5cf6]">Village Bazaar</h1>
+<button class="px-4 py-2 bg-[#f59e0b] hover:bg-[#e67e22] text-white rounded-lg font-medium flex items-center gap-2" id="sellBtn">
+<i data-feather="plus"></i>
+<span data-en="Sell" data-hi="बेचें">Sell</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8" id="bazaarItems">
+<!-- Sample products -->
+<div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all">
+<img alt="Handmade Pottery" class="w-full h-48 object-cover" src="http://static.photos/craft/640x360/1"/>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-lg font-medium">Handmade Terracotta Pottery</h3>
+<span class="bg-[#06b6d4] text-white text-sm font-medium px-2 py-1 rounded-full">₹450</span>
+</div>
+<p class="text-gray-600 mb-4">Traditional red clay pots handmade by artisans from Kumhar community.</p>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-[#8b5cf6] flex items-center justify-center text-white text-xs">R</div>
+<div class="ml-3">
+<p class="text-sm font-medium">Rajesh Kumar</p>
+<p class="text-xs text-gray-500">Pokhran, Rajasthan</p>
+</div>
+</div>
+<a class="bg-[#f59e0b] text-white p-2 rounded-full hover:bg-[#e67e22] transition" href="tel:+919876543210">
+<i data-feather="phone"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all">
+<img alt="Organic Spices" class="w-full h-48 object-cover" src="http://static.photos/food/640x360/2"/>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-lg font-medium">Organic Turmeric Powder</h3>
+<span class="bg-[#06b6d4] text-white text-sm font-medium px-2 py-1 rounded-full">₹120/100g</span>
+</div>
+<p class="text-gray-600 mb-4">Pure turmeric powder made from organically grown turmeric roots.</p>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-[#8b5cf6] flex items-center justify-center text-white text-xs">P</div>
+<div class="ml-3">
+<p class="text-sm font-medium">Priya Devi</p>
+<p class="text-xs text-gray-500">Erode, Tamil Nadu</p>
+</div>
+</div>
+<a class="bg-[#f59e0b] text-white p-2 rounded-full hover:bg-[#e67e22] transition" href="tel:+919876543211">
+<i data-feather="phone"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Sell Modal -->
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden" id="sellModal">
+<div class="bg-white rounded-xl shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+<div class="p-6">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-bold text-[#8b5cf6]">Sell Your Product</h3>
+<button class="text-gray-500 hover:text-gray-700" id="closeModal">
+<i data-feather="x"></i>
+</button>
+</div>
+<form class="space-y-4" id="sellForm">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="productName">Product Name</label>
+<input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8b5cf6] focus:border-[#8b5cf6] outline-none transition" id="productName" name="productName" required="" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="productDesc">Description</label>
+<textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8b5cf6] focus:border-[#8b5cf6] outline-none transition" id="productDesc" name="productDesc" required="" rows="3"></textarea>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="productPrice">Price (₹)</label>
+<input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8b5cf6] focus:border-[#8b5cf6] outline-none transition" id="productPrice" name="productPrice" required="" type="number"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="productCategory">Category</label>
+<select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8b5cf6] focus:border-[#8b5cf6] outline-none transition" id="productCategory" name="productCategory">
+<option value="craft">🎨 Handicraft</option>
+<option value="food">🍲 Food</option>
+<option value="textile">🧵 Textile</option>
+<option value="other">✨ Other</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="sellerName">Your Name</label>
+<input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8b5cf6] focus:border-[#8b5cf6] outline-none transition" id="sellerName" name="sellerName" required="" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="sellerVillage">Village/Town</label>
+<input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8b5cf6] focus:border-[#8b5cf6] outline-none transition" id="sellerVillage" name="sellerVillage" required="" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="sellerContact">Contact Number</label>
+<input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8b5cf6] focus:border-[#8b5cf6] outline-none transition" id="sellerContact" name="sellerContact" required="" type="tel"/>
+</div>
+<button class="w-full py-3 bg-[#8b5cf6] hover:bg-[#7c3aed] text-white rounded-lg font-medium transition mt-4 flex items-center justify-center gap-2" type="submit">
+<i data-feather="upload-cloud"></i>
+<span data-en="List Product" data-hi="उत्पाद सूचीबद्ध करें">List Product</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+<custom-footer></custom-footer>
+<custom-bottom-nav></custom-bottom-nav>
+<!-- Scripts -->
+<script src="components/navbar.js"></script>
+<script src="components/footer.js"></script>
+<script src="components/bottom-nav.js"></script>
+<script src="script.js"></script>
+
+<script src="components/navbar.js"></script><script src="components/footer.js"></script><script src="components/bottom-nav.js"></script><script src="script.js"></script><script>feather.replace(); document.addEventListener('DOMContentLoaded', function(){ /* UI handled by script.js */ });</script></body>
+</html>

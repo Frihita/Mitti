@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitti - Roots of India</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#fff7ed] font-inter text-gray-800 min-h-screen flex flex-col">
+    <custom-navbar></custom-navbar>
+    
+    <main class="flex-1 px-4 py-6">
+        <!-- Hero Section -->
+        <section class="max-w-4xl mx-auto text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-[#8b5cf6]">Mitti <span class="text-[#f59e0b]">मिट्टी</span></h1>
+            <p class="text-xl md:text-2xl mb-6 text-gray-600">Preserve & Share Culture • संस्कृति संजोएं</p>
+            <div class="bg-gradient-to-r from-[#8b5cf6] to-[#f59e0b] h-1 w-24 mx-auto rounded-full"></div>
+        </section>
+
+        <!-- Story of the Day -->
+        <section class="max-w-4xl mx-auto mb-12">
+            <h2 class="text-2xl font-semibold mb-4 text-[#06b6d4]">Story of the Day</h2>
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h3 class="text-xl font-medium mb-2">Madhubani Art Tradition</h3>
+                    <p class="text-gray-600 mb-4">Discover the ancient art form from Bihar that uses natural dyes and intricate patterns to tell stories of gods and nature.</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-[#f59e0b] flex items-center justify-center text-white">A</div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium">Anjali Kumari</p>
+                            <p class="text-xs text-gray-500">Madhubani, Bihar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- From Your Village -->
+        <section class="max-w-4xl mx-auto mb-12">
+            <h2 class="text-2xl font-semibold mb-4 text-[#06b6d4]">From Your Village</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="villageStories">
+                <!-- Stories will be loaded here via JS -->
+            </div>
+        </section>
+
+        <!-- Our Culture -->
+        <section class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-semibold mb-4 text-[#06b6d4]">Our Culture</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="art.html" class="bg-gradient-to-br from-[#8b5cf6] to-[#f59e0b] rounded-xl p-6 text-center text-white hover:shadow-lg transition-all">
+                    <div class="text-3xl mb-2">🎨</div>
+                    <p>Art Traditions</p>
+                </a>
+                <a href="food.html" class="bg-gradient-to-br from-[#06b6d4] to-[#8b5cf6] rounded-xl p-6 text-center text-white hover:shadow-lg transition-all">
+                    <div class="text-3xl mb-2">🍲</div>
+                    <p>Food</p>
+                </a>
+                <a href="festivals.html" class="bg-gradient-to-br from-[#f59e0b] to-[#06b6d4] rounded-xl p-6 text-center text-white hover:shadow-lg transition-all">
+                    <div class="text-3xl mb-2">🎭</div>
+                    <p>Festivals</p>
+                </a>
+                <a href="music.html" class="bg-gradient-to-br from-[#06b6d4] to-[#f59e0b] rounded-xl p-6 text-center text-white hover:shadow-lg transition-all">
+                    <div class="text-3xl mb-2">🎵</div>
+                    <p>Folk Songs</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <custom-footer></custom-footer>
+    <custom-bottom-nav></custom-bottom-nav>
+
+    <!-- Scripts -->
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="components/bottom-nav.js"></script>
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+        // Set active nav item
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('custom-bottom-nav .nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.querySelector('.nav-label').textContent === 'Home') {
+                    item.classList.add('active');
+                }
+            });
+
+            // Load sample stories
+            const stories = [
+                {
+                    title: "Grandma's Mango Pickle Recipe",
+                    desc: "Traditional summer pickle made with raw mangoes from our orchard.",
+                    author: "Rukmini Devi",
+                    village: "Chittoor, Andhra Pradesh"
+                },
+                {
+                    title: "Pattachitra Painting",
+                    desc: "Ancient scroll painting technique using natural colors from stones and flowers.",
+                    author: "Bijay Parida",
+                    village: "Puri, Odisha"
+                },
+                {
+                    title: "Herbal Cold Remedy",
+                    desc: "Turmeric milk with tulsi and black pepper - our winter immunity booster.",
+                    author: "Kamla Bai",
+                    village: "Udaipur, Rajasthan"
+                },
+                {
+                    title: "Bihu Dance Steps",
+                    desc: "Traditional Assamese dance movements for the harvest festival.",
+                    author: "Ranjit Gogoi",
+                    village: "Guwahati, Assam"
+                }
+            ];
+
+            const container = document.getElementById('villageStories');
+            stories.forEach(story => {
+                container.innerHTML += `
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all">
+                        <div class="p-6">
+                            <h3 class="text-lg font-medium mb-2">${story.title}</h3>
+                            <p class="text-gray-600 mb-4">${story.desc}</p>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-[#8b5cf6] flex items-center justify-center text-white text-xs">${story.author.charAt(0)}</div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium">${story.author}</p>
+                                    <p class="text-xs text-gray-500">${story.village}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>
